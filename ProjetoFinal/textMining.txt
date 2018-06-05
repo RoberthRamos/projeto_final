@@ -1,0 +1,98 @@
+STOP WORD -- https://pythonspot.com/nltk-stop-words/
+
+rodar para instalar o nltk
+import nltk
+nltk.download()
+
+from nltk.tokenize import sent_tokenize, word_tokenize
+ 
+data = "All work and no play makes jack a dull boy, all work and no play"
+print(word_tokenize(data))
+
+from nltk.tokenize import sent_tokenize, word_tokenize
+ 
+data = "All work and no play makes jack dull boy. All work and no play makes jack a dull boy."
+print(sent_tokenize(data))
+
+from nltk.tokenize import sent_tokenize, word_tokenize
+ 
+data = "All work and no play makes jack dull boy. All work and no play makes jack a dull boy."
+ 
+phrases = sent_tokenize(data)
+words = word_tokenize(data)
+ 
+print(phrases)
+print(words)
+
+from nltk.tokenize import sent_tokenize, word_tokenize
+ 
+data = "All work and no play makes jack dull boy. All work and no play makes jack a dull boy."
+words = word_tokenize(data)
+print(words)
+
+from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.corpus import stopwords
+ 
+data = "All work and no play makes jack dull boy. All work and no play makes jack a dull boy."
+stopWords = set(stopwords.words('english'))
+
+data = "Vamos testar o stopwords com essa biblioteca muito boa do python"
+stopWords = set(stopwords.words('portuguese'))
+
+words = word_tokenize(data)
+wordsFiltered = []
+ 
+for w in words:
+    if w not in stopWords:
+        wordsFiltered.append(w)
+
+print(wordsFiltered)
+
+from nltk.corpus import stopwords
+
+stopWords = set(stopwords.words('english'))
+
+print(len(stopWords))
+print(stopWords)
+
+for w in words:
+    if w not in stopWords:
+        wordsFiltered.append(w)
+
+STEMMING -- https://pythonprogramming.net/stemming-nltk-tutorial/
+
+from nltk.stem import PorterStemmer
+from nltk.tokenize import sent_tokenize, word_tokenize
+
+ps = PorterStemmer()
+
+example_words = ["python","pythoner","pythoning","pythoned","pythonly"]
+
+for w in example_words:
+    print(ps.stem(w))
+
+new_text = "It is important to by very pythonly while you are pythoning with python. All pythoners have pythoned poorly at least once."
+
+words = word_tokenize(new_text)
+
+for w in words:
+    print(ps.stem(w))
+
+BAG OF WORDS -- https://pythonprogramminglanguage.com/bag-of-words/
+
+from sklearn.feature_extraction.text import CountVectorizer
+
+corpus = ['All my cats in a row',
+          'When my cat sits down, she looks like a Furby toy!',
+          'The cat for outer space',
+          'Sunshine loves to sit like this for some reason.']
+
+vectorizer = CountVectorizer()
+
+print(vectorizer.fit_transform(corpus).todense())
+print(vectorizer.vocabulary_)
+
+print(vectorizer.fit_transform(X_all).toarray())
+print(vectorizer.vocabulary_)
+
+AJUSTE BASE -- http://www.akbarian.org/notes/text-mining-nlp-python/
